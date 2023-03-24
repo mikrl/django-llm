@@ -4,17 +4,19 @@
 An app for Django to aid development of LLM workflows
 
 # Information
-TBD :D
-
+#TODO Endpoints for prompts (CRUD)
+#TODO Endpoint for memory
+#TODO Endpoint for OpenAI queries
 # Installation
-TBD :P
+`pip install -r requirements.txt` 
 
 # Tests
-pip install -r static.txt
+`pip install -r static.txt`
 `./static.sh`
 `pytest tests/`
 
 # Features
 Supports Python 3.11+
 Model to store API key in database
-#TODO Endpoints for prompts
+
+ 

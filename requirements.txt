@@ -1,0 +1,5 @@
+Django==4.1.7
+openai==0.27.2
+langchain==0.0.121
+llama-index==0.4.36
+pytest==7.2.2

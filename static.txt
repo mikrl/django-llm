@@ -1,4 +1,4 @@
-black
-pylint
-flake8
-radon
+black==23.1.0
+pylint==2.17.1
+flake8==6.0.0
+radon==5.1.0
