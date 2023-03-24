@@ -1,3 +1,4 @@
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/release/python-3112/)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # Django LLM
@@ -20,8 +21,6 @@ An app for Django to aid development of LLM workflows
 `pytest tests/`
 
 # Features
-Supports Python 3.11+
-
 Model to store API key in database
-
+Model to hold prompt
  
