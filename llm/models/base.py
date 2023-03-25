@@ -9,6 +9,7 @@ class ModelProviderAPI(models.Model):
 
     service = models.CharField(_("API Provider"), max_length=100)
     api_key = models.CharField(_("API Key"), max_length=100)
+
     class Meta:
         verbose_name = "LLM Provider API"
         verbose_name_plural = "LLM Provider APIs"
