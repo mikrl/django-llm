@@ -7,11 +7,15 @@ An app for Django to aid development of LLM workflows
 # Information
 #TODO Endpoints for prompts (CRUD)
 
-#TODO Endpoint for memory
+#TODO Mopdels and endpoints for memory
 
 #TODO Endpoint for OpenAI queries
-# Installation
+# Installation from source
 `pip install -r requirements.txt` 
+
+# Installation from binary
+`python setup.py bdist_whl && pip install dist/*.whl`
+
 
 # Tests
 `pip install -r static.txt`
@@ -23,4 +27,5 @@ An app for Django to aid development of LLM workflows
 # Features
 Model to store API key in database
 Model to hold prompt
+Model to make a ChatGPT query (under development)
  
