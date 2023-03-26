@@ -5,20 +5,39 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('llm', '0002_rename_modelapi_modelproviderapi_and_more'),
+        ("llm", "0002_rename_modelapi_modelproviderapi_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='OpenAIChatQuery',
+            name="OpenAIChatQuery",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('query_response', models.TextField()),
-                ('memory', models.BooleanField()),
-                ('api', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to='llm.modelproviderapi')),
-                ('prompt', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='llm.prompt')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("query_response", models.TextField()),
+                ("memory", models.BooleanField()),
+                (
+                    "api",
+                    models.OneToOneField(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="llm.modelproviderapi",
+                    ),
+                ),
+                (
+                    "prompt",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE, to="llm.prompt"
+                    ),
+                ),
             ],
         ),
     ]

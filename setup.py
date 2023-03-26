@@ -12,7 +12,7 @@ setup(
     url="<package URL>",
     license="<package license>",
     packages=["django_llm"],
-    install_requires= requirements, #TODO test down to Django 3
+    install_requires=requirements,  # TODO test down to Django 3
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: <license name>",

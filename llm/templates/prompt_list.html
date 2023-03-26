@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Prompts</h1>
+  <ul>
+    {% for prompt in object_list %}
+      <li>
+        <a href="{% url 'prompt_detail' prompt.pk %}">
+          {{ prompt.template }}
+        </a>
+      </li>
+    {% empty %}
+      <li>No prompts yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

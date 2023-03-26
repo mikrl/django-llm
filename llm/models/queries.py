@@ -1,11 +1,11 @@
+from langchain.prompts import PromptTemplate
+from langchain.chat_models.openai import ChatOpenAI
+from langchain.chains import LLMChain
+
 from django.db import models
 from llm.managers.openai import OpenAIChatManager
 from llm.models import ModelProviderAPI
 from llm.models import Prompt
-
-from langchain.prompts import PromptTemplate
-from langchain.chat_models.openai import ChatOpenAI
-from langchain.chains import LLMChain
 
 
 class OpenAIChatQuery(models.Model):
@@ -20,10 +20,7 @@ class OpenAIChatQuery(models.Model):
         provider = ChatOpenAI(openai_api_key=openai_api_key)
 
         input_vars = self.prompt.input_variables.split(";")
-
-        # Iterates over input vars from the database and pulls vals from keyword args
-        # Defaults to the empty string # TODO add validation logic
-        var_dict = {var: variables.get(var, "") for var in input_vars}
+        # TODO validate whether input vars match the supplied kwargs. Fallback logic
 
         template = self.prompt.template
         if self.memory:
@@ -32,7 +29,7 @@ class OpenAIChatQuery(models.Model):
         prompt = PromptTemplate(input_variables=input_vars, template=template)
 
         chain = LLMChain(provider, prompt)
-        self.query_response = chain.run(var_dict)
+        self.query_response = chain.run(**variables)
 
     def __str__(self):
         return str(self.id)
