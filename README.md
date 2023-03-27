@@ -5,13 +5,13 @@
 An app for Django to aid development of LLM workflows
 
 # Information
-Some models for coordinating LLM tasks. Provides a Django wrapper for langchain and openai.
+Some models for coordinating LLM tasks. Provides a Django wrapper for ChatGPT via langchain.
 
 ## Installation
-`pip install -r requirements.txt` 
+`pip install django-llm` 
 
 ## Installation from binary
-`python setup.py bdist_whl && pip install dist/*.whl`
+`./build.sh && pip install dist/*.whl`
 
 # Tests
 `pip install -r static.txt`
@@ -22,8 +22,8 @@ Some models for coordinating LLM tasks. Provides a Django wrapper for langchain 
 
 # Features
 Model to store API key in database
-Model to hold prompt
-Model to make a ChatGPT query (under development)
+Model to hold prompt and determine prompt variables
+Model to make a ChatGPT query with supplied variables
  
 #TODO Endpoints for prompts (CRUD)
 #TODO Mopdels and endpoints for memory

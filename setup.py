@@ -9,7 +9,7 @@ setup(
     author="Michael Lynch",
     author_email="michael@flatlander.dev",
     description="A LLM (Large Language Model) app for Django",
-    url="<package URL>",
+    url="https://github.com/mikrl/django-llm",
     license="MIT",
     packages=["django_llm"],
     install_requires=requirements,  # TODO test down to Django 3
