@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 with open("requirements.txt", "r") as f:
     requirements = f.read().splitlines()
@@ -11,7 +11,7 @@ setup(
     description="A LLM (Large Language Model) app for Django",
     url="https://github.com/mikrl/django-llm",
     license="MIT",
-    packages=["django_llm"],
+    packages=find_packages(exclude=["django_llm", "tests"]),
     install_requires=requirements, 
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

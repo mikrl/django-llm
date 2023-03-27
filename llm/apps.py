@@ -28,6 +28,6 @@ class LlmConfig(AppConfig):
         'llm.apps.LlmConfig',  # Add the LlmConfig app config to INSTALLED_APPS
     ]
     """
-
-    default_auto_field = "django.db.models.BigAutoField"
     name = "llm"
+    verbose_name = "Large Language Models"
+    default_auto_field = "django.db.models.AutoField"
