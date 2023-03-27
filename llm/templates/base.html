@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}django-llm{% endblock %}</title>
+</head>
+<body>
+
+  <div id="header">
+    <h1>django-llm</h1>
+  </div>
+
+  <div id="content">
+    {% block content %}{% endblock %}
+  </div>
+
+  <div id="footer">
+    <p>&copy; django-llm {{ year }}</p>
+  </div>
+
+</body>
+</html>

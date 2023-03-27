@@ -1,13 +1,20 @@
 {% extends "base.html" %}
 
+{% block title %}
+    Prompts
+{% endblock %}
+
 {% block content %}
   <h1>Prompts</h1>
   <ul>
     {% for prompt in object_list %}
       <li>
-        <a href="{% url 'prompt_detail' prompt.pk %}">
+        <a href="{% url 'llm:prompt_detail' prompt.pk %}">
           {{ prompt.template }}
         </a>
+        <ul>
+          <li>Input variables: {{ prompt.get_input_variables|join:', ' }}</li>
+        </ul>
       </li>
     {% empty %}
       <li>No prompts yet.</li>

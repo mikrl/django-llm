@@ -10,14 +10,14 @@
 
 """
 from django.urls import path
-from llm.views import PromptListView, OpenAIChatQueryListView
+from llm.views import (
+    PromptDetailView,
+    PromptListView,
+)  # , OpenAIChatQueryDetailView, OpenAIChatQueryListView
+
+app_name = "llm"
 
 urlpatterns = [
-    path(
-        "queries/",
-        OpenAIChatQueryListView.as_view(),
-        name="openai_chat_query_list",
-    ),
+    path("prompts/<int:pk>/", PromptDetailView.as_view(), name="prompt_detail"),
     path("prompts/", PromptListView.as_view(), name="prompt_list"),
-    # other URL patterns here...
 ]

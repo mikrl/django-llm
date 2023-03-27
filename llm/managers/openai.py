@@ -1,19 +1,15 @@
 from django.db import models
+from llm.models.prompts import Prompt
 
 
 class OpenAIChatManager(models.Manager):
-    def create_from_prompt(self, prompt, **variables):
-        obj = self.model(prompt=prompt)
-        obj.do_query(**variables)
-        obj.save()
-        return obj
-
     def to_json(self):
-        super()
         return {
-            "id": super().id,
-            "prompt": super().prompt.to_json(),
-            "api": super().api.to_json(),
-            "query_response": super().query_response,
-            "memory": super().memory,
+            "id": self.id,
+            "prompt": self.prompt.to_json(),
+            "api_key": self.api_key,
+            "memory": self.memory,
         }
+
+    def update(self, instance, new_prompt: Prompt):
+        instance.update(new_prompt)

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ prompt.template }}</h1>
+
+  <p>Input variables: {{ prompt.get_input_variables|join:', ' }}</p>
+
+  <a href="{% url 'llm:prompt_list' %}">Back to prompts list</a>
+{% endblock %}
