@@ -39,19 +39,24 @@ pytest tests/
 ## Run ChatGPT queries through Django shell and model code
 ```bash
 $ docker build -t django_llm .  
-$ docker run -it django_llm 
+$ docker run -it django_llm
+>>> 
 >>> from llm.models.prompts import Prompt
 >>> prompt = Prompt(template = "Give a bombastic and raucous 'Hello, {name}' to the user")
 >>> prompt.save()
 >>> Prompt.objects.all()
 <QuerySet [<Prompt: Prompt object (1)>]>
->>> Prompt.objects.all()[0].template
+>>> prompt.template
 "Give a bombastic and raucous 'Hello, {name}' to the user"
+>>> prompt.variables
+['name']
+>>>
 >>> from llm.models import ModelProviderAPI
 >>> openai = ModelProviderAPI(service = 'OpenAI', api_key = '<<<YOUR OPENAI API KEY>>>')
 >>> openai.save()
 >>> openai.service
 'OpenAI'
+>>>
 >>> from llm.models.queries import OpenAIChatQuery
 >>> query = OpenAIChatQuery(prompt = prompt, api = openai)
 >>> query.do_query(name="World")
