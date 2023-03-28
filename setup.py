@@ -5,7 +5,7 @@ with open("requirements.txt", "r") as f:
 
 setup(
     name="django-llm",
-    version="0.1.2",
+    version="0.1.3",
     author="Michael Lynch",
     author_email="michael@flatlander.dev",
     description="A LLM (Large Language Model) app for Django",
