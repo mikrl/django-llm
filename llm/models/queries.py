@@ -27,5 +27,17 @@ class OpenAIChatQuery(models.Model):
         chain = LLMChain(llm=provider, prompt=prompt)
         return chain.run(**variables)
 
+    def json_response(self, **variables):
+        return {
+            "id": self.id,
+            "prompt": self.prompt.to_json(),
+            "promptvars": self.prompt.variables,
+            "suppliedvars": variables,
+            "response": self.do_query(**variables),
+        }
+
+    def update(self, instance, new_prompt: Prompt):
+        instance.update(new_prompt)
+
     def __str__(self):
         return str(self.id)

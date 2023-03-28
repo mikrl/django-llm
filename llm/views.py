@@ -7,7 +7,6 @@
         - OpenAIChatQueryListView: View for displaying a list of OpenAIChatQuery objects.
         - PromptListView: View for displaying a list of Prompt objects.
 """
-from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, ListView
 from django.views.generic.edit import (
@@ -21,34 +20,41 @@ from llm.forms import PromptForm, ModelProviderAPIForm, OpenAIChatQueryForm
 from llm.models import ModelProviderAPI, Prompt
 from llm.models.queries import OpenAIChatQuery
 
+
 class CreatePromptView(CreateView):
     model = Prompt
     form_class = PromptForm
-    template_name = 'create_prompt.html'
-    success_url = reverse_lazy('llm:prompt_list')
+    template_name = "create_prompt.html"
+    success_url = reverse_lazy("llm:prompt_list")
+
 
 class DeletePromptView(DeleteView):
     model = Prompt
-    success_url = reverse_lazy('llm:prompt_list')
+    success_url = reverse_lazy("llm:prompt_list")
+
 
 class ProcessPromptView(ProcessFormView):
     form_class = PromptForm
-    template_name = 'process_prompt.html'
-    success_url = reverse_lazy('llm:prompt_list')
+    template_name = "process_prompt.html"
+    success_url = reverse_lazy("llm:prompt_list")
 
     def form_valid(self, form):
         # Do some processing with the form data here
         return super().form_valid(form)
+
+
 class EditPromptView(UpdateView, ModelFormMixin):
     model = Prompt
     form_class = PromptForm
-    template_name = 'edit_prompt.html'
-    success_url = reverse_lazy('llm:prompt_list')
+    template_name = "edit_prompt.html"
+    success_url = reverse_lazy("llm:prompt_list")
+
 
 class ModelProviderAPIDetailView(DetailView):
     model = ModelProviderAPI
     template_name = "api_detail.html"
     context_object_name = "api"
+
 
 class ModelProviderAPIListView(ListView):
     model = ModelProviderAPI
@@ -59,20 +65,20 @@ class ModelProviderAPIListView(ListView):
 class CreateModelProviderAPIView(CreateView):
     model = ModelProviderAPI
     form_class = ModelProviderAPIForm
-    template_name = 'create_api.html'
-    success_url = reverse_lazy('llm:modelproviderapi_list')
+    template_name = "create_api.html"
+    success_url = reverse_lazy("llm:modelproviderapi_list")
 
 
 class DeleteModelProviderAPIView(DeleteView):
     model = ModelProviderAPI
-    template_name = 'delete_api.html'
-    success_url = reverse_lazy('llm:modelproviderapi_list')
+    template_name = "delete_api.html"
+    success_url = reverse_lazy("llm:modelproviderapi_list")
 
 
 class ProcessModelProviderAPIView(ProcessFormView):
     form_class = ModelProviderAPIForm
-    template_name = 'process_api.html'
-    success_url = reverse_lazy('llm:modelproviderapi_list')
+    template_name = "process_api.html"
+    success_url = reverse_lazy("llm:modelproviderapi_list")
 
     def form_valid(self, form):
         # Do some processing with the form data here
@@ -82,8 +88,8 @@ class ProcessModelProviderAPIView(ProcessFormView):
 class EditModelProviderAPIView(UpdateView, ModelFormMixin):
     model = ModelProviderAPI
     form_class = ModelProviderAPIForm
-    template_name = 'edit_api.html'
-    success_url = reverse_lazy('llm:modelproviderapi_list')
+    template_name = "edit_api.html"
+    success_url = reverse_lazy("llm:modelproviderapi_list")
 
 
 class OpenAIChatQueryDetailView(DetailView):
@@ -101,6 +107,7 @@ class OpenAIChatQueryDetailView(DetailView):
     template_name = "query_detail.html"
     context_object_name = "query"
 
+
 class OpenAIChatQueryListView(ListView):
     """
     A view that displays a list of OpenAIChatQuery objects.
@@ -112,7 +119,6 @@ class OpenAIChatQueryListView(ListView):
 
     model = OpenAIChatQuery
     template_name = "query_list.html"
-
 
 
 class CreateOpenAIChatQueryView(CreateView):
@@ -129,6 +135,7 @@ class CreateOpenAIChatQueryView(CreateView):
     template_name = "query_form.html"
     fields = ["prompt", "api", "memory"]
 
+
 class EditOpenAIChatQueryView(UpdateView, ModelFormMixin):
     """
     A view that provides a form for editing an existing OpenAIChatQuery object.
@@ -144,9 +151,10 @@ class EditOpenAIChatQueryView(UpdateView, ModelFormMixin):
     template_name = "query_form.html"
     fields = ["prompt", "api", "memory"]
 
+
 class DeleteOpenAIChatQueryView(DeleteView):
     """
-    A view that provides a confirmation page for deleting an existing OpenAIChatQuery object.
+    A confirmation page for deleting an existing OpenAIChatQuery object.
 
     Attributes:
         model: The model that this view deletes an existing object of.

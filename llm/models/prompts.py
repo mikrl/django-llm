@@ -2,12 +2,11 @@ import re
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from llm.managers.base import PromptManager
 
 
 class Prompt(models.Model):
     template = models.TextField(_("Prompt Template"))
-    #objects = PromptManager()
+    # objects = PromptManager()
 
     class Meta:
         verbose_name = "Prompt"
@@ -19,7 +18,7 @@ class Prompt(models.Model):
         matches = re.findall(r"{([^}]*)}", self.template)
         # return list of unique matches
         return list(set(matches))
-    
+
     def to_json(self):
         return {
             "id": self.id,

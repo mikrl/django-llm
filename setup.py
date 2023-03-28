@@ -12,7 +12,7 @@ setup(
     url="https://github.com/mikrl/django-llm",
     license="MIT",
     packages=find_packages(exclude=["django_llm", "tests"]),
-    install_requires=requirements, 
+    install_requires=requirements,
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
         "Environment :: Web Environment",
