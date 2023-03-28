@@ -38,8 +38,8 @@ pytest tests/
 # Features
 ## Run ChatGPT queries through Django shell and model code
 ```bash
-docker build -t django_llm .  
-docker run -it django_llm 
+$ docker build -t django_llm .  
+$ docker run -it django_llm 
 >>> from llm.models.prompts import Prompt
 >>> prompt = Prompt(template = "Give a bombastic and raucous 'Hello, {name}' to the user")
 >>> prompt.save()
