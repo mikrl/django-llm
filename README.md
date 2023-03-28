@@ -28,7 +28,7 @@ pip install django-llm
 pip install dist/*.whl
 ```
 
-# Tests
+# Tests (Stabilizing)
 ```bash
 pip install -r static.txt
 ./static.sh
@@ -38,16 +38,18 @@ pytest tests/
 # Features
 ## Run ChatGPT queries through Django shell and model code
 ```bash
-$ ./manage.py shell
+docker build -t django_llm .  
+docker run -it django_llm 
 >>> from llm.models.prompts import Prompt
 >>> prompt = Prompt(template = "Give a bombastic and raucous 'Hello, {name}' to the user")
 >>> prompt.save()
 >>> Prompt.objects.all()
-<QuerySet [<Prompt: Prompt object (1)>, <Prompt: Prompt object (2)>, <Prompt: Prompt object (3)>, <Prompt: Prompt object (4)>]>
->>> Prompt.objects.all()[3].template
+<QuerySet [<Prompt: Prompt object (1)>]>
+>>> Prompt.objects.all()[0].template
 "Give a bombastic and raucous 'Hello, {name}' to the user"
 >>> from llm.models import ModelProviderAPI
->>> openai = ModelProviderAPI.objects.all()[0]
+>>> openai = ModelProviderAPI(service = 'OpenAI', api_key = '<<<YOUR OPENAI API KEY>>>')
+>>> openai.save()
 >>> openai.service
 'OpenAI'
 >>> from llm.models.queries import OpenAIChatQuery
