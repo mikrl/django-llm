@@ -36,6 +36,28 @@ pytest tests/
 ```
 
 # Features
+## Run ChatGPT queries through Django shell and model code
+```bash
+$ ./manage.py shell
+>>> from llm.models.prompts import Prompt
+>>> prompt = Prompt(template = "Give a bombastic and raucous 'Hello, {name}' to the user")
+>>> prompt.save()
+>>> Prompt.objects.all()
+<QuerySet [<Prompt: Prompt object (1)>, <Prompt: Prompt object (2)>, <Prompt: Prompt object (3)>, <Prompt: Prompt object (4)>]>
+>>> Prompt.objects.all()[3].template
+"Give a bombastic and raucous 'Hello, {name}' to the user"
+>>> from llm.models import ModelProviderAPI
+>>> openai = ModelProviderAPI.objects.all()[0]
+>>> openai.service
+'OpenAI'
+>>> from llm.models.queries import OpenAIChatQuery
+>>> query = OpenAIChatQuery(prompt = prompt, api = openai)
+>>> query.do_query(name="World")
+"HELLO WORLD! WELCOME TO THE MIGHTY REALM OF TECHNOLOGY AND INNOVATION! PREPARE TO BE ASTOUNDED AND DAZZLED BY THE POWER OF CODE AND THE ENDLESS POSSIBILITIES OF THE DIGITAL AGE! LET'S ROCK AND ROLL!"
+>>>
+```
+
+## More
 * Model to configure and execute ChatGPT query
 * Model to hold prompt and determine prompt variables
 * Model to store API keys for various services
