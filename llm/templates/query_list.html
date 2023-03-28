@@ -10,7 +10,7 @@
   <ul>
     {% for query in object_list %}
       <li>
-        <a href="{% url 'openai_chat_query_detail' query.id %}">{{ query.prompt }}</a>
+        <a href="{% url 'llm:openai_chat_query_detail' query.id %}">{{ query.prompt }}</a>
       </li>
     {% empty %}
       <li>No queries yet.</li>

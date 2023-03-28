@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Delete API</h1>
+  <p>Are you sure you want to delete the {{ api.name }} API?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes</button>
+    <a href="{% url 'api_detail' api.pk %}">No</a>
+  </form>
+{% endblock %}

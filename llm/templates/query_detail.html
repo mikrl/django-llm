@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ query.name }}</h1>
+
+  <p>Prompt: {{ query.prompt }}</p>
+  <p>Query text: {{ query.query_text }}</p>
+
+  <a href="{% url 'llm:openai_chat_query_list' %}">Back to query list</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ api.service }}</h1>
+
+  <!-- <p>Endpoint: {{ api.endpoint }}</p>
+  <p>Input schema:</p>
+  <pre>{{ api.input_schema|safe }}</pre>
+  <p>Output schema:</p>
+  <pre>{{ api.output_schema|safe }}</pre> -->
+
+  <a href="{% url 'llm:api_list' %}">Back to API list</a>
+{% endblock %}

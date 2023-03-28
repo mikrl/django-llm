@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Confirm deletion of "{{ object.prompt }}"
+{% endblock %}
+
+{% block content %}
+  <h1>Confirm deletion of "{{ object.prompt }}"</h1>
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this query?</p>
+    <input type="submit" value="Confirm">
+    <a href="{% url 'openai_chat_query_detail' object.id %}">Cancel</a>
+  </form>
+{% endblock %}

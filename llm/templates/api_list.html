@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    APIs
+{% endblock %}
+
+{% block content %}
+  <h1>APIs</h1>
+  <ul>
+    {% for api in object_list %}
+      <li>
+        <a href="{% url 'llm:api_detail' api.pk %}">
+          {{ api.service }}
+        </a>
+      </li>
+    {% empty %}
+      <li>No APIs yet.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
