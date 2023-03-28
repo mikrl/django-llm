@@ -3,7 +3,6 @@ from langchain.chat_models.openai import ChatOpenAI
 from langchain.chains import LLMChain
 
 from django.db import models
-from llm.managers.openai import OpenAIChatManager
 from llm.models import ModelProviderAPI
 from llm.models import Prompt
 
@@ -13,7 +12,6 @@ class OpenAIChatQuery(models.Model):
     prompt = models.OneToOneField(Prompt, on_delete=models.CASCADE)
     api = models.ForeignKey(ModelProviderAPI, on_delete=models.SET_NULL, null=True)
     memory = models.BooleanField()
-    objects = OpenAIChatManager()
 
     def do_query(self, **variables):
         openai_api_key = self.api.api_key
