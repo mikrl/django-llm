@@ -66,19 +66,19 @@ class CreateModelProviderAPIView(CreateView):
     model = ModelProviderAPI
     form_class = ModelProviderAPIForm
     template_name = "create_api.html"
-    success_url = reverse_lazy("llm:modelproviderapi_list")
+    success_url = reverse_lazy("api_list")
 
 
 class DeleteModelProviderAPIView(DeleteView):
     model = ModelProviderAPI
     template_name = "delete_api.html"
-    success_url = reverse_lazy("llm:modelproviderapi_list")
+    success_url = reverse_lazy("api_list")
 
 
 class ProcessModelProviderAPIView(ProcessFormView):
     form_class = ModelProviderAPIForm
     template_name = "process_api.html"
-    success_url = reverse_lazy("llm:modelproviderapi_list")
+    success_url = reverse_lazy("llm:api_list")
 
     def form_valid(self, form):
         # Do some processing with the form data here
@@ -89,7 +89,7 @@ class EditModelProviderAPIView(UpdateView, ModelFormMixin):
     model = ModelProviderAPI
     form_class = ModelProviderAPIForm
     template_name = "edit_api.html"
-    success_url = reverse_lazy("llm:modelproviderapi_list")
+    success_url = reverse_lazy("llm:api_list")
 
 
 class OpenAIChatQueryDetailView(DetailView):
