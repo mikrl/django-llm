@@ -11,13 +11,12 @@ class OpenAIChatQuery(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     prompt = models.OneToOneField(Prompt, on_delete=models.CASCADE)
     api = models.ForeignKey(ModelProviderAPI, on_delete=models.SET_NULL, null=True)
-    memory = models.BooleanField()
 
     def do_query(self, **variables):
         openai_api_key = self.api.api_key
         provider = ChatOpenAI(openai_api_key=openai_api_key)
 
-        input_vars = self.prompt.to_json().get("variables")
+        input_vars = self.prompt.as_dict().get("variables")
 
         template = self.prompt.template
         prompt = PromptTemplate(input_variables=input_vars, template=template)
@@ -25,17 +24,17 @@ class OpenAIChatQuery(models.Model):
         chain = LLMChain(llm=provider, prompt=prompt)
         return chain.run(**variables)
 
-    def json_response(self, **variables):
+    def do_query_dict(self, **variables):
         return {
             "id": self.id,
-            "prompt": self.prompt.to_json(),
+            "prompt": self.prompt.as_dict(),
             "promptvars": self.prompt.variables,
             "suppliedvars": variables,
-            "response": self.do_query(**variables),
+            "queryresponse": self.do_query(**variables),
         }
 
-    def update(self, instance, new_prompt: Prompt):
-        instance.update(new_prompt)
+    def update(self, new_prompt: Prompt):
+        self.update(new_prompt)
 
     def __str__(self):
         return str(self.id)
