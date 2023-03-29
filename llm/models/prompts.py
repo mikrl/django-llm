@@ -19,7 +19,7 @@ class Prompt(models.Model):
         # return list of unique matches
         return list(set(matches))
 
-    def to_json(self):
+    def as_dict(self):
         return {
             "id": self.id,
             "prompt": self.template,
